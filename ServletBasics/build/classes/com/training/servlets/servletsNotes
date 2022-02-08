@@ -1,0 +1,37 @@
+Servlets 
+1. Lifecycle methods - web container calls these methods as needed
+	a. init() 
+	b. service()
+	c. destroy()
+2. Phases 
+	a. Instantiation - web container loads classes into memory and creates an instance of it
+	b. Initialization - web container then calls init method on the servlet (init method is only called once 
+           and should be used to create database connections)
+	c. Servicing  - web container then calls the service method, the service method is where all the business 
+           logic goes (saving data to databse, retrieving info from database, etc.), the service method is called 
+	   n times (so if there are 1000 user orders, the service method will be called a 1000 times)
+	d. Destruction - the web container finally calls the destroy method (the destroy method is only called once
+           and should be used to close connections)
+
+Web application folder structure standards 
+1. WEBAPP folder 
+	a. (application name, i.e. google, twitter)
+	b. The webapp folder will have in subfolders, html and jsp files (home.html, login.jsp)
+3. WEB-INF 
+	a. will have in it web.xml (servlets configuration file)
+	b. all class files 
+	c. all library classes (jar files like mysql.jar, spring.jar, hibernate.jar)
+
+
+Servlets 
+1. Servlets are dynamic web applications developed using Java. A servlet is a program that runs on a web    container that can:
+	a. Get user requests
+	b. make calls to the database to get and send information 
+	c. send responses to the web browser
+
+Servlet Annotations
+1. Allows you to configure servlets (alternative to using web.xml)
+2. Annotations and web.xml achieve the same purpose of configuring servlets (and usually it's a matter of preference
+   on which to use). If you use both annotations and web.xml to configure, web.xml will override annotation changes
+
+ 
