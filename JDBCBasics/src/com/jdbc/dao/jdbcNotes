@@ -1,0 +1,64 @@
+JDBC 
+
+All of the JDBC APIs are contained in the java.sql.* package
+
+JDBC Architecture
+1.JDBC client - the application code we are developing that wants to connect to the database
+	a. connects to the database using the JDBC driver
+	b. performs CRUD statements 
+	c. processes the response 
+	d. handle exceptions
+	e. do transaction management if needed
+	f. close the connection
+2.JDBC API - API from Oracle, that contains all of the needed classes to perform what the JDBC client wants, such as:
+	a. Connection
+	b. Statement
+	c. ResultSet
+3.JDBC Driver - implements the JDBC API to perform the needed work the JDBC client wants to do
+	a. first, will establish a connection to the database
+	b. after connection is established, the client will talk directly with the driver (not the driver manager) 
+       to perform all of the tasks that the JDBC client wants to do (CRUD statements, exceptions, etc.)
+4.JDBC Driver Manager - helper class that finds a driver and establishes a connection to the databse
+	a. JDBC client uses the driver manager once and only once to find driver and create a database connection
+	b. after a connection has been made, the driver manager's job is done, and from here on out, the JDBC client 
+       communicates directly with the driver to perform CRUD operations, and all of the other tasks the client
+       needs to do 
+
+--------------------------
+Adding MySQL driver
+1. Download driver
+2. Create Java project 
+3. If not using Maven, create a lib folder in your project, and copy and paste the MySQL .jar file into the lib folder
+4. Right click on your project and go to properties, go to Java build path, click on libraries, click on add
+   .jar files, add the .jar file and click apply
+5. Use Class.forName("com.mysql.cj.jdbc.Driver");
+
+5 Steps to perform CRUD operations
+1. Establish a connection
+2. Create a statement object
+3. Submit the SQL query to the DBMS
+4. Close the statement 
+5. Close the connection 
+----------------------------
+Creating a connection 
+1. Use DriverManget.getConnection("database url", "username","password");
+----------------------------
+Creating a statement 
+1. Statement is a JDBC API interface used to execute DML and DDL statements from JDBC client
+2. To create a statement, first create a connection 
+3. After creating a connection, use connection.createStatement();
+4. Two important methods when using statements:
+	a. executeUpdate method = takes a DML statement (Insert, Update, Delete), and returns an integer of how 
+           many records were inserted, updated or deleted 
+	b. executeQuery method = takes in a select statement which returns a result set which is a  list of records 
+	   from the database 
+	   		1. Result set = object oriented representation of a table records retrieved 
+	   		   from the database. Result method has two important methods:
+	   		   		a. next method = initially points to the zero record area of the 
+	   		   		   result set, and changes the pointer to the record are of the result set,
+	   		   		   and it keeps doing this until there are no more records to be read from 
+	   		   		   the database, then it moves the pointer to the no record area of the 
+	   		   		   result set. It also returns true or false depending if there are more 
+	   		   		   records to be read 
+	   		   		b. get methods = will allow you to get specified column data type for each row
+	   		   		   that is read while inside the while loop
