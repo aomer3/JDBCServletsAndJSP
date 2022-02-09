@@ -1,0 +1,13 @@
+Statement Notes:
+1. When using statements, each statement (read, insert, update or delete) is 
+   sent through the driver and to the database one statement at a time. The 
+   database then compiles each statement one at a time, and executes each 
+   statement one at a time. 
+2. This constant compilation for each statement degrades the performance of the 
+   application. 
+
+Prepared Statements
+1. Child interface of the Statement interface 
+2. Instead of compiling one statement at a time, a PreparedStatement will compile
+   and execute an entire query at once
+3. PreparedStatements increase the performance of the program 

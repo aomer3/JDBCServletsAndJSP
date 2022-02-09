@@ -1,0 +1,29 @@
+Servlet Context Notes:
+1. Servlet Context - interface in the Servlet API 
+2. Servlet containter implements this interface and creates the servlet context
+3. There is one servlet context for the entire application
+4. The servlet context is destroyed when undeploy our application from the container
+5. Data stored in the servlet context is global and can be shared anywhere in the 
+   application 
+6. During the initialization phase, the server container injects the servlet context
+   into the servlet so that the servlet can use the data in the servlet context
+7. Servlet context can be passed in as a paramter in the init() method, or it can
+   be called using ServletContext context = getServletContext(); either in the 
+   init() or service()
+
+
+4 Uses of Servlet Context:
+1. Share and manipulate data  
+2. To deal with context params
+3. To create RequestDispatcher object for inter-servlet communication 
+4. To store information into the server log files using the log method (rarely used,
+   usually will use easier to work with third party applications like log4j)
+   
+   
+Context Paramters
+1. Conext paramters - name-value pairs of textual information in that is supplied by the web.xml 
+   configuration file for the applicaton. 
+2. Similar to init paramters but difference is that init parameters are only available 
+   for a particular servlet, whereas context paramters are available throughout the
+   entire applications and accessible by all servlets and jsp files 
+   supplied to the ser

@@ -1,0 +1,26 @@
+Dynamic Web Apps
+1. The HTTP protocol supports several methods in which a client can access a web server 
+	a. GET method
+		1. default method used if no method is specified, GET method will be used
+		2. GET is used in 3 cases: when typing in a URL, when clicking a hyperlink, default method 		   when submitting a form
+		3. GET is meant to be used for when you're retrieving information 
+		4. GET method only has header fields, and doesn't have a body
+		5. The data in the GET method goes through the URL
+		6. Sensitive information like credit card numbers and passwords should never be sent through GET
+		7. Since it's being sent through the URL, GET has a restriction on the length of data being sent
+		8. GET is idempotent - no matter how many GET requests are run, because you are only ever reading 
+   	           data from the database, it will not change the state of the database
+	b. POST method
+		1. POST method will never be used unless it is explicitly specified as the method to use
+		2. POST method is used when explicitly specified in a form
+		3. POST is meant to be used when you are modifying data (insert, update, delete)
+		4. POST method has header fields and a body
+		5. The data in the POST method goes through the POST body
+		6. Sensitive information should be sent through POST
+		7. POST has no restriction on the length of data being sent
+		8. Each time POST is sent, it will change the database 
+--------------------------
+Creating the dynamic web app
+1. Create a dynamic web app on eclipse 
+2. Copy and paste MySQL .jar file into the lib folder insider WEB-INF
+3. Create user table in MySQL workbench 
