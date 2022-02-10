@@ -1,0 +1,11 @@
+Pre-Initialization Notes:
+1. A servlet can be initialized in one of two ways
+	a. Lazy initialization - server container initializes a servlet only after the first 
+	   web client request comes in 
+	b. Pre-Initialization - server container initializes a servlet even before any web client
+	   requests come in 
+2. Pre-Initialization can be done wither through
+	a. annotations using loadOnStartUp in the @WebServletConfig annotation
+	b. web.xml using <load-on-startup> tag
+3. Load-On-Startup takes a numeric element as its data from 0 as highest priority and should be 
+   loaded first (higher the number, lower the priority and order the servlet is loaded)
