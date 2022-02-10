@@ -1,0 +1,11 @@
+Inter-Servlet Communication 
+1. Done using RequestDispatcher
+2. Two ways request dispatcher can be done
+	a. Method 1 - forward method: request comes from client, servlet 1 handles that requests 
+	   and then forwards the request to servlet 2 for it to complete more work. Once the last 
+	   servlet completes its job, it will send the response back to the client
+	b. Method 2 - include method: request comes from client, servlet 1 handles the request and 
+	   then uses include on servlet 2 for the additional work remaining, then the container 
+	   combines both reponses from servlet 1 and servlet 2 and sends it back to the client. The 
+	   difference is that the control never goes to servlet 2 but all the work is merged instead 
+	   to create the response to send back the client 
