@@ -1,0 +1,9 @@
+Servlet Listeners 
+1. Servlet listeners allow servlets to react to certain events in the web application, and 
+   then take appropriate 
+   action if required 
+2. These events can be:
+	a. requests - creating and destroying when a user request comes in
+	b. sessions - creating and destroying user sessions
+	c. context - a web application being loaded and unloaded from the application container 
+	d. handling asynchronous events (i.e on-complete, on-start
