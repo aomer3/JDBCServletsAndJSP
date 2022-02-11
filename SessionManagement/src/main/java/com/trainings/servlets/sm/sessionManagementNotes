@@ -1,0 +1,77 @@
+Session Management Notes
+1. HTTP is stateless protocol 
+2. A stateless protocol means that the server does not maintain a continuous connection 
+   after the server has handled    the request and sent a response to the client. Another 
+   way of saying this is that the socket connection is destroyed everytime the server sends 
+   a response back to the client. And when the next request comes in from the client, the 
+   client has to establish another new connection with the server. 
+		a. the result of this is that server cannot "remember" information from one request
+		   to another request
+3. The HTTP protocol was delibertly written this way because it offers several advantages:
+	a. Performance - because HTTP is stateless, the server does not need to maintain the 
+	   overhead of the connection. As soon as the response is sent, the server closes that 
+	   connection/kills that socket
+	b. Scalability - because HTTP is stateless, we can easily scale up our applications. 
+	   The same applicatoin can be deployed on multiple web servers (which is absolutely 
+	   required to do when the application running has millions of users). The result will 
+	   be thousands of the same application running on multiple servers to handle the 
+	   number of users accessing the applicaiton. When we are using multiple web servers, 
+	   we need to use load balancers to determine which server the user will be sent to. 
+
+3 Steps for Session Management 
+Session management = allows for data to be shared over multiple user sessions 
+Step 1: Create the session
+	a. the session can be created using the getSession method of the HttpSession object
+Step 2: Maintain the data using the 4 attributes of HttpSession
+	a. we can set the data onto the HttpSession object, and this will then maintain data 
+	over multiple user sessions
+Step 3: End the session 
+
+
+How getSession method works:
+1. When a client request comes into the server, the server will check to see if the 
+   request has a sessionId field in it
+2. If the request does not have a sessionId, then the web container will create a new 
+   session in memory and will generate a unique session id for the request, and will 
+   associate the newly created session with the session id created
+3. The new sessionId generated will come with it a HttpSession object and this object 
+   will be used for the new session started. The Servlet can then use this HttpSession 
+   object to store information into it and maintain the state
+4. The server will then send a response back and in the response, it will include the 
+   session id
+5. The client, when it generates a new request, can then use this same sessionId when it 
+   starts a new session with the server 
+
+
+Session Tracking
+1. Session tracking is maintain the state across multiple session requests, despite HTTP 
+   being a stateless protocol
+2. A session can be defined in two ways:
+	a. whatever happens between when a user logs in and the user logs out
+	b. tracking user interaction - right from the time when you visit the website until 
+	   you close the browser or leave the website
+3. Sessions have two responsibilities 
+	a. identify the client/user 
+	b. maintain the state across multiple requests (done with session tracking)
+
+	
+Ending a Session
+1. A session can end in two ways
+	a. when a user logs out 
+	b. when the session expires - when the user is inactive for a specified period of time
+	
+	
+
+Cookies
+1. HTTP cookies are name-value pairs of textual information that can be used to exchange
+   data between the web client and web server, as reside in the HTTP headers
+   
+
+URL Rewriting 
+1. URL Rewriting is required when the cookies are disabled on the client's browser
+2. Since we can't do session management using cookies, we have to use url rewriting instead
+3. URL rewriting works only with URLS, and does not work form fields 
+
+ 
+
+   
