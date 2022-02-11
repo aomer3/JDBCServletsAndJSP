@@ -1,0 +1,11 @@
+Filters
+1. A filter is a Java class that can intercept the request and response cycles of a servlet 
+2. Any logic that we want to execute before the servlet request is processed by the servlet can 
+   be placed in the filter (this is the pre-processing logic)
+3. Any logic that we want to execute after it has been processed by the servlet but before it 
+   goes back to the web client can also be placed in the filter (post-processing logic)
+4. Example: injection attack filter that is used to prevent injection attacks. If a hacker sends 
+   a script or string in the request that can crash the program, we can search for those strings 
+   in the filter and reject the request if the request has such strings 
+5. Filter chaining - applying more than one filter to a servlet or jsp (i.e one filter doing 
+   encrypting/decrypting, a second filter doing zipping and unzipping of reqest and response)
