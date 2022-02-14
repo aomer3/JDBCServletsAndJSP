@@ -1,0 +1,102 @@
+JSP Notes:
+
+1. Java Server Pages (JSP) overcomes some of the issues with servlets
+
+2. JSPs run on a JSP container (like Tomcat)
+
+3. JSPs can accomplish the following tasks
+	a. take requests from web clients
+	b. process the request 
+	c. make calls to the database 
+	d. process the response
+   	e. create a proper HTML response to the web browser
+   	
+4. JSPs separate out the Java code and HTML code, making it easier to parallely develop in 
+   both languages 
+   
+5. JSPs avoid boilerplate coding found in servlets (we do not have to code out the init, 
+   service, destroy methods, or extend HTTPServlet. JSPs gives use easier syntax to achieve
+   the same thing, and all of the rest will happen automatically 
+
+JSP Elements
+1. The JSP API elemnts are grouped into 3 groups
+	a. Scripting elements - allow us to write Java code in a JSP page
+	b. Directives - translation time instructions to the container (allows us to import 
+	   libraries)
+	c. Actions - runtime instructions to JSP container (allows us to perform dynamic 
+	   operations at runtime)
+
+2. Similar to servlets, the JSP has 3 lifecycle methods
+	a. jspInit()
+	b. jspService()
+	c. jspDestroy()
+	
+3. JSPs have 6 life cycle phases (4 of which are similar with servlets -- difference is 
+   that JSP has translation and compilation phases that servlets do not have)
+	a. Translation - when we create a JSP, it's a JSP file (.jsp). But when the first 
+	   client request comes in to the  program, the .jsp file will be converted by the 
+	   JSP container into a servlet file (.java)
+	b. Compilation - the .java file that was created from the .jsp file then is compiled 
+	   by the Java compiler into a .class file
+	c. Instantiation
+	d. Initialization
+	e. Servicing
+	f. Destruction
+
+Implicit Objects
+1. There are 9 implicit objects available to every JSP page (implicit because we as 
+   developers do not have to do anything special in order to use these objects)
+    a. config (the ServerConfig object that is passed to the init method)
+	b. request (the HTTPServletRequest that is passed to the service method, i.e. doPost 
+	   and doGet)
+	c. response (the HTTPServletResponse that is passed to the service methods, i.e. doPost
+	   and doGet)
+	d. session (the HTTPSession)
+	e. application (the ServletContext, configuration set in the ServletContext is applied
+	   to the entire application)
+	f. page (represents an instance of this particular JSP page object in memory) -- rarely
+	   used because it's global, better to use pageContext whenever you can
+	g. pageContext (configuration set in the pageContext is applied through the JSP page)
+	h. exception (used when doing error handling)
+	i. out (instance of JSPWriter and used to write to the web browser, similar to PrintWriter
+	   on Servlets)
+	   
+Scripting Elements
+1. Allows us to embed Java code in JSP pages	   
+2. 3 types of scripting elements
+	a. Declaration
+		1. Every declaration starts with <%! and ends with %>
+		2. Inside a declaration block, you can put any Java code, and here you can declare
+		   variables and use methods 
+		3. All of the Java code placed in the declaration block, once the JSP file is 
+		   translated into a Servlet, will becomes the member variables and methods of the 
+		   Servlet object. The variables and methods placed here are global level.
+		4. We can have as many declaration blocks as we want inside a JSP page
+	b. Expression
+		1. Every expression starts with <%= and ends with %>
+		2. In an expression, we can put any Java expression that evaluates to a value
+		   Examples: a+b, or user.getName()
+		3. Expression tag does two things:
+			a. evaluates the Java expression
+			b. send it back as a response to the web browser
+		4. We can have as many expression tags as we want and all of the Java expressions
+		   are placed in the JSP service method once it is translated into a Servlet 
+	c. Scriplets
+		1. The most often used element 
+		2. Starts with <% and ends with %>
+		3. Can hold as many Java statements as we want and all of the Java statements 
+		   placed in scriplets will go into the JSP service method
+
+
+JSP Directives
+1. JSP Directives are translation time instructions to a JSP container. During the process
+   of the JSP container turning a JSP file into a Servlet, JSP Directives tell the container
+   what that servlet should look like and what should be inside of it 
+2. 3 types of directives:
+	a. include - used to implement the <%include file=""%> tag, that allows us for reusability,
+	   for example, if we have a header or footer that is common over multiple pages, we 
+	   can use include to include the header and footer instead of rewriting it each time
+	b. page - one of the most used directive and has 13 attributes, but most of these are
+	   not used. Examples: import, errorpage, iserrorpage, session, contenttype
+	c. taglib - a library of tags, taglib allows us to use tags. These tags look like 
+	   html tags but have Java code running in them instead
