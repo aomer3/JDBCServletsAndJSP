@@ -1,0 +1,15 @@
+JSP Actions
+1. JSP ACtions (JSP tags) are runtime instructions to JSP container
+
+
+2 Types of JSP tags
+1. Predefined - allows yu to do interservlet communication 
+	a. include - include other JSPs
+	b. forward - forward to other JSPs
+	c. param - allows you to include additional parameters when using include and param
+	
+	//These predefined tags allow you to use beans in a JSP page
+	d. usebean
+	e. setProperty
+	f. getProperty
+2. Custom tags
