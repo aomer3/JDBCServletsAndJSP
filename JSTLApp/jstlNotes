@@ -1,0 +1,29 @@
+JSTL (Java pages Standard Tag Library) Notes
+1. JSTL are a set of predefined tags from Oracle
+2. There are many tags used but the most used are the core tags (c:, ex- c:if, c:for)
+3. JSTL allows you to write out a lot of programming logic without using Java
+
+
+To use JSTL tags, you must copy jstl.jar and standard.jar inTO your WEB-INF lib folder
+
+Evaluates an expression then prints to the screen
+<c:out value="{10+9}" 
+
+Assigns value and scope to a variable
+-scope can be application, request, session or context
+<c:set var="score" scope="session" value="${80}"> 
+
+Removes a variable from a scope
+<c:remove var="score"> 
+
+Using if conditional 
+<c: if>
+	//code here
+</c:if>
+
+
+//Similar to Java switch statement
+<c:choose>
+
+//Looping statement
+<c:forEach>
