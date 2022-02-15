@@ -1,0 +1,24 @@
+MVC Design Pattern
+1. A design pattern that splits the web layer into three parts
+	a. model (Java class)- represents the current state of the application
+		1. holds the business logic
+		2. connects to the database and performs CRUD operations
+	b. view (HTML, JSP) - responsible for displaying the current model to the end user
+		1. will generate an html output and send back to the web browser
+	c. controller (Servlet) - the glue that holds together the model and view
+		1. responsible for selecting the appropriate model to serve the appropriate request
+		2. interacts with both the view and model as needed 
+
+How MVC Design Pattern Works
+1. We get request from the View (HTML)
+2. The View talks to the Controller (Java servlet)
+3. The Controller talks to the Model (Java  class)
+4. The Model talks to the Controller
+5. The Controller talks to the View (JSP)
+
+2 Advantages to using the MVC Design Pattern
+1. Maintenance 
+	a. because the responsibilities are split up into various components, we can more 
+	easily pinpoint and fix any issues that come up
+2. Parallel Development 
+	b. work can be done on each component simultaneously without tripping over each other
