@@ -1,0 +1,16 @@
+Custom Tags
+1. When the inbuilt JSP tags are not enough for the business requirements, we can create 
+   custom tags
+
+2 Steps to creating custom tags
+1. Create the Tag Handler Class
+2. Map the custom tag handler class inside a file called Tag Lib Descriptor (tld) - 
+   an .xml file that allows us to pass in some properties into the tag handler class at 
+   runtime
+
+
+4 Lifecycle Methods
+1. setPageContext()
+2. doStartTag()
+3. doEndTag()
+4. release()
