@@ -1,0 +1,21 @@
+Building an app notes (using JDBC, Servlets, JSPs)
+
+Steps to build an app:
+1. Create tables in MySQL
+
+2. Create models to represent those database tables in Java
+	a. place these models in their own package (.model package)
+	
+3. Connect to database (can use connection pooling here to increase efficiency)
+	a. place this database connection in its own package (.util package)
+	
+4. Create the necessary CRUD methods in the DAO classes as per project requirements
+	a. place all the DAO classes in their own package (.dao package)
+	
+5. Create all of the Views for the application 
+	a. these will be .html and .jsp files
+	
+6. Create controllers that will take user request from Views and link them with the DAOs
+	a. place all controllers in their own package (.controller package)
+
+

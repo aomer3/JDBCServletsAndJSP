@@ -1,0 +1,9 @@
+BigDecimalNotes
+1. In databases, the data type can be decimal
+2. To accurately represent the database decimal in Java, you use BigDecimal
+3. Advantage of using BigDecimal: it will not round numbers in the database, will 
+   return the exact value to the Java program. Must use when dealing with very sensitive
+   data like money, etc. that would create issues if rounded. 
+4. Disadvantage of using BigDecimal: it is slower than Double, and in most cases,
+   would be an overkill to use. If decimals can be rounded without issue, it's best to 
+   use Double instead
