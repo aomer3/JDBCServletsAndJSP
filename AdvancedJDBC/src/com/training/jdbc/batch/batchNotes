@@ -1,0 +1,13 @@
+JDBC Batch Updates
+1. If we are executing multiple DML statements from the JDBC client through the driver 
+   against the database, each time we execute a statement, there is a separate call made 
+   to the database. All of these calls are a performance overhead. Each time we send a 
+   statement, there is network latency. 
+2. JDBC Batch Updates address this issue of making multiple calls from the client to the 
+   database
+3. With JDBC Batch Updates, we can group a set of DML statements and send them all at 
+   once through the driver and to the database 
+
+2 Steps to batching 
+1. Add the dml statements to the batch (i.e. stmt.addBatch(String dml);)
+2. Execute the batch (i.e. int result[] = stmt.executeBatch();)

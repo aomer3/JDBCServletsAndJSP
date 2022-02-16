@@ -1,0 +1,14 @@
+ResultSet
+1. ResultSet is an interface in the JDBC API
+2. ResultSet allows us to move through the rows of data when we execute a select 
+   query
+3. ResultSet will give you back the rows of data, but will not give you any 
+   metadata (i.e. column types, column names, etc.)
+
+ResultSetMetaData
+1. ResultSetMetaData allows you to get the metadata from the ResultSet
+
+
+Steps for getting meta data
+1. Execute select query and use resultSet to get data
+2. Use ResultSetMetaData

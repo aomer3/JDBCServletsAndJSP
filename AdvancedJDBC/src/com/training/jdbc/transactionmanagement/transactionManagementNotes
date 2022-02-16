@@ -1,0 +1,25 @@
+Transaction Management 
+1. A logical unit of work where all of the work gets done or nothing gets done
+   Example of Transaction Management: online money transfer
+2. Transaction Management use temp tables to process the DML statements first, 
+   then transferring those changes to the actual tables 
+
+4 Properties of Transaction Management (ACID)
+1. Automicity - either all DML statements are executed, or nothing is executed  
+2. Consistency - changes made should be consistent on multiple tables (ex: if 
+   $500 is decremented on one table, $500 should be incremented in another table, 
+   in an online money exchange situation)
+3. Isolation - when one transaction is happening, it should happen in complete 
+   isolation. And other transactions should not read incorrect or corrupt data, 
+   that could result from one transaction not being completely finished
+4. Durability - when a transaction finishes, the data that is stored should still 
+   be there even if there is power loss
+
+
+Transaction Management Methods
+1. Using the Connection interface, we can:
+	a. Commit - signals that the transaction is done and changes can be committed 
+	b. Rollback - when we want to return everything to a prior state
+	c. Savepoint - we can commit or rollback a transaction to a certain point 
+
+
