@@ -1,0 +1,32 @@
+Connection Pooling Notes
+1. Connection pooling allows us to request the container to create a set of JDBC connections when it starts up
+2. These connections can then be used by servlets, JSPs, etc. and send the connection back when they're done with the work
+
+
+2 Advantages
+1. Performance - because the connections are already ready, the servlets and JSPs can simply do their work without    worrying about establishing a connection
+2. Resusability - once a application component is done with its work, it can return the connection back to the pool,    so that other components can use it again
+
+
+How to configure connection pooling
+1. Add mysql.jar to the lib folder in the tomcat installation folder
+2. Go to context.xml (after ctrl + shift + r to open a resource) and add the resource tag
+
+<Resource name="myds" auth="Container" type="javax.sql.DataSource"
+driverClassName="com.mysql.cj.jdbc.Driver"
+url="jdbc:mysql://localhost:3306/mydb
+username="root" password="GoReadMe2021!"/> 
+
+name= name you want to give to this datasource
+auth = container if you want the container to handle authentication security for you
+type = type of the datasource
+
+
+
+Steps to Acquiring a connection
+1. Connect to the naming service
+2. Looking up the datasource
+3. Get the connection 
+
+
+
